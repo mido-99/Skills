@@ -43,7 +43,7 @@
 
     pre.innerHTML = d.code.map(function (ln, k) {
       return '<span class="stepper-line" data-k="' + k + '"><span class="stepper-ln">' + (start + k) + '</span>' + esc(ln) + '</span>';
-    }).join('\n');
+    }).join('');
 
     function show() {
       var s = d.steps[i];

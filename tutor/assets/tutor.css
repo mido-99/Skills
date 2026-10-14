@@ -73,7 +73,7 @@ th { background: var(--panel); }
 /* Debugger-style stepper */
 .stepper { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; margin: 1.5rem 0; overflow: hidden; font-family: system-ui, sans-serif; }
 .stepper-code { margin: 0; padding: .6rem 0; background: transparent; border: 0; border-radius: 0; }
-.stepper-line { display: block; padding: 0 1rem; white-space: pre; }
+.stepper-line { display: block; line-height: 1.5; padding: 0 1rem; white-space: pre; }
 .stepper-line.active { background: var(--line-hl); box-shadow: inset 3px 0 0 var(--concept); }
 .stepper-ln { color: var(--muted); display: inline-block; width: 2.2rem; user-select: none; }
 .stepper-note { padding: .7rem 1rem; border-top: 1px solid var(--border); }
@@ -84,3 +84,13 @@ th { background: var(--panel); }
 .stepper-ctl button { background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: .35rem .8rem; cursor: pointer; }
 .stepper-ctl button:disabled { opacity: .4; cursor: default; }
 .stepper-pos { color: var(--muted); margin-left: auto; font-size: .85rem; }
+
+/* Debugger: break out of the narrow column; code left, explanation right */
+.stepper { width: min(96vw, 84rem); margin-left: 50%; transform: translateX(-50%); display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 1fr); grid-template-areas: "path path" "code note" "code vars" "code ctl"; grid-template-rows: auto auto auto 1fr; }
+.stepper > .path { grid-area: path; }
+.stepper > .stepper-code { grid-area: code; border-right: 1px solid var(--border); overflow-x: auto; line-height: 1.45; }
+.stepper > .stepper-note { grid-area: note; border-top: 1px solid var(--border); }
+.stepper > .stepper-vars { grid-area: vars; }
+.stepper > .stepper-ctl { grid-area: ctl; align-self: end; }
+.stepper-line { line-height: 1.45; }
+@media (max-width: 800px) { .stepper { width: 100%; margin-left: 0; transform: none; grid-template-columns: 1fr; grid-template-areas: "path" "code" "note" "vars" "ctl"; } .stepper > .stepper-code { border-right: 0; } }
