@@ -1,0 +1,86 @@
+/* Tutor shared stylesheet: dark by default, light via [data-theme="light"] on <html>. */
+:root {
+  --bg: #0f1117;
+  --panel: #171a23;
+  --border: #2a2f3d;
+  --text: #e6e6e6;
+  --muted: #9aa3b5;
+  --concept: #ffb454;
+  --code: #5ccfe6;
+  --warn: #ff6b6b;
+  --term: #a6e22e;
+  --ok: #3ddc84;
+  --line-hl: rgba(255, 180, 84, 0.18);
+}
+:root[data-theme="light"] {
+  --bg: #fbfbf8;
+  --panel: #f0efe9;
+  --border: #d6d3c8;
+  --text: #1c1c1c;
+  --muted: #5b6270;
+  --concept: #9a5b00;
+  --code: #00677f;
+  --warn: #b3261e;
+  --term: #3d6b00;
+  --ok: #17803d;
+  --line-hl: rgba(154, 91, 0, 0.14);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0 auto;
+  max-width: 46rem;
+  padding: 2rem 1rem 5rem;
+  background: var(--bg);
+  color: var(--text);
+  font: 1.05rem/1.7 "Segoe UI", system-ui, sans-serif;
+}
+h1, h2, h3 { font-family: system-ui, sans-serif; line-height: 1.25; }
+h2 { margin-top: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+a { color: var(--code); }
+p { margin: .8rem 0; }
+code, pre, .stepper-code { font-family: ui-monospace, Consolas, monospace; font-size: .92rem; }
+code { background: var(--panel); padding: .1rem .35rem; border-radius: 4px; }
+pre { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; overflow-x: auto; }
+.path { color: var(--muted); font: .8rem ui-monospace, Consolas, monospace; margin-bottom: -.5rem; }
+
+/* Keyword colors: wrap every important word so it pops. */
+.kw-concept { color: var(--concept); font-weight: 700; }
+.kw-code { color: var(--code); font-weight: 600; }
+.kw-warn { color: var(--warn); font-weight: 700; }
+.kw-term { color: var(--term); font-weight: 600; }
+
+.callout { background: var(--panel); border-left: 4px solid var(--concept); padding: .6rem 1rem; border-radius: 0 8px 8px 0; }
+.analogy { border-left-color: var(--term); }
+table { border-collapse: collapse; width: 100%; font-family: system-ui, sans-serif; font-size: .95rem; }
+th, td { border: 1px solid var(--border); padding: .5rem .7rem; text-align: left; vertical-align: top; }
+th { background: var(--panel); }
+
+#theme-toggle { position: fixed; top: .8rem; right: .8rem; background: var(--panel); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: .3rem .6rem; cursor: pointer; font: .85rem system-ui, sans-serif; }
+
+/* Quiz */
+.quiz { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.2rem; margin: 1.5rem 0; font-family: system-ui, sans-serif; }
+.quiz-q { font-weight: 700; margin: 0 0 .7rem; }
+.quiz-opt { display: block; width: 100%; text-align: left; margin: .4rem 0; padding: .6rem .8rem; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; font: inherit; }
+.quiz-opt:hover:not(:disabled) { border-color: var(--concept); }
+.quiz-opt:disabled { cursor: default; }
+.quiz-opt.correct { border-color: var(--ok); }
+.quiz-opt.wrong { border-color: var(--warn); }
+.quiz-why { margin-top: .8rem; font-size: .95rem; }
+.quiz-why li { margin: .35rem 0; }
+.quiz-why .tag-ok { color: var(--ok); font-weight: 700; }
+.quiz-why .tag-no { color: var(--warn); font-weight: 700; }
+
+/* Debugger-style stepper */
+.stepper { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; margin: 1.5rem 0; overflow: hidden; font-family: system-ui, sans-serif; }
+.stepper-code { margin: 0; padding: .6rem 0; background: transparent; border: 0; border-radius: 0; }
+.stepper-line { display: block; padding: 0 1rem; white-space: pre; }
+.stepper-line.active { background: var(--line-hl); box-shadow: inset 3px 0 0 var(--concept); }
+.stepper-ln { color: var(--muted); display: inline-block; width: 2.2rem; user-select: none; }
+.stepper-note { padding: .7rem 1rem; border-top: 1px solid var(--border); }
+.stepper-vars { padding: .5rem 1rem; border-top: 1px solid var(--border); font: .88rem ui-monospace, Consolas, monospace; min-height: 2.2rem; }
+.stepper-vars .var-name { color: var(--code); }
+.stepper-vars .var-new { color: var(--concept); font-weight: 700; }
+.stepper-ctl { display: flex; gap: .5rem; align-items: center; padding: .6rem 1rem; border-top: 1px solid var(--border); }
+.stepper-ctl button { background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: .35rem .8rem; cursor: pointer; }
+.stepper-ctl button:disabled { opacity: .4; cursor: default; }
+.stepper-pos { color: var(--muted); margin-left: auto; font-size: .85rem; }

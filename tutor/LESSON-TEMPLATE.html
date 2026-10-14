@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LESSON TITLE</title>
+<link rel="stylesheet" href="../assets/tutor.css">
+<script src="../assets/quiz.js" defer></script>
+<script src="../assets/stepper.js" defer></script>
+</head>
+<body>
+<button id="theme-toggle" type="button" onclick="(function(){var r=document.documentElement;var l=r.getAttribute('data-theme')==='light';r.setAttribute('data-theme',l?'dark':'light');try{localStorage.setItem('tutor-theme',l?'dark':'light')}catch(e){}})()">Dark / Light</button>
+<script>try{var t=localStorage.getItem('tutor-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+
+<h1>LESSON TITLE</h1>
+<p>One sentence: what you will be able to do after this lesson, tied to your mission.</p>
+
+<h2>1. A real-world picture</h2>
+<div class="callout analogy">
+  <p>Everyday analogy in plain words. Wrap the important words: <span class="kw-term">like this</span>.</p>
+</div>
+
+<h2>2. The idea, abstractly</h2>
+<p>3 to 5 short sentences. First use of each jargon term gets a plain definition and a <span class="kw-concept">keyword color</span>.</p>
+
+<div class="quiz" data-quiz='{"q":"Question one?","options":[
+  {"text":"Right answer here","correct":true,"why":"Why it is right."},
+  {"text":"Wrong answer one","correct":false,"why":"Why it is wrong."},
+  {"text":"Wrong answer two","correct":false,"why":"Why it is wrong."}
+]}'></div>
+
+<h2>3. The same idea in real code</h2>
+<table>
+  <tr><th>Analogy</th><th>Concept</th><th>In the code</th></tr>
+  <tr><td>the kitchen</td><td><span class="kw-concept">class</span></td><td><code class="kw-code">ClassName</code></td></tr>
+</table>
+<p class="path">path/to/file.py:12</p>
+<pre><code>verbatim snippet from the repo</code></pre>
+
+<h2>4. Walk through it like a debugger</h2>
+<div class="stepper" data-stepper='{"path":"path/to/file.py:12","start":12,"code":["line one","line two"],"steps":[
+  {"line":0,"note":"What happens here.","vars":{"x":1}},
+  {"line":1,"note":"What happens next.","vars":{"x":1,"y":2}}
+]}'></div>
+
+<div class="quiz" data-quiz='{"q":"Question two?","options":[
+  {"text":"Wrong answer one","correct":false,"why":"Why it is wrong."},
+  {"text":"Wrong answer two","correct":false,"why":"Why it is wrong."},
+  {"text":"Right answer here","correct":true,"why":"Why it is right."}
+]}'></div>
+
+<h2>Takeaway</h2>
+<p class="callout">One sentence to remember.</p>
+
+<p>Primary source: <a href="#">link</a>. Still unclear? Ask your tutor (the agent) any follow-up question.</p>
+<p><a href="../reference/">Reference sheets</a> · <a href="#">Next lesson</a></p>
+</body>
+</html>
